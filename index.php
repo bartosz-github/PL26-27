@@ -14,12 +14,12 @@
       $database = "******";
 
       $connect = new mysqli($host, $user, $password, $database);
-
+      
       if($connect->error)
         die("Failed to connect with database");
       echo "Database connected!";
 
-      $sql = "SELECT id, team, points  FROM statecaps ORDER BY id";
+      $sql = "SELECT id, team, points  FROM pltable ORDER BY id";
       $result = $connect->query($sql);
 
 
@@ -38,8 +38,8 @@
       $connect->close();
 
       echo "<br>"."<br>"."<br>"."<br>"."<br>";
-
-
+      
+    ?>
     <ol>
         <li>db (table from 25-26)</li>
         <li>table</li>
