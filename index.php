@@ -55,21 +55,6 @@
 <!--<form action="update.php" method="post">-->
 
 
-<!-- back from break
-upd tmorrs,
-4dys out, long days, 10k walk!, fan, fun, cars, greens.
-weather on to crasi, 2hot & 2humid, 
-DUSTY! shoes => must(wash)
-DUSTY! Soil turn to dust! Greens turn gray(rip)
-Ponds dissapear.
-Shocking! 
-Very hot weather! Every month since May had record temps this year!!!!
-August!!! Sawanah in Mid England! 
-Coding on 18h -->
-
-
-
-
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   Name: <input type="text" name="name">
   <span class="error">* <?php echo $nameErr;?></span>
