@@ -9,10 +9,10 @@
 <body>
 
     <?php
-      $host = "localhost";
-      $user = "***********************";
-      $password = "***********************";
-      $database = "***********************";
+      $host = "***";
+      $user = "***";
+      $password = "***";
+      $database = "***";
 
       $connect = new mysqli($host, $user, $password, $database);
       
@@ -41,7 +41,6 @@
       echo "<br>"."<br>"."<br>"."<br>"."<br>";
 
 
-
       
     ?>
     <ol>
@@ -55,7 +54,7 @@
 <!--<form action="update.php" method="post">-->
 
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<!-- <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   Name: <input type="text" name="name">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
@@ -76,7 +75,10 @@
   <span class="error">* <?php echo $genderErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="Submit">
-</form>
+</form> -->
+
+  <!--https://www.w3schools.com/PHP/php_form_required.asp-->
+
 
 <!-- Team: <input type="text" name="team"><br>
 Points: <input type="text" name="points"><br> -->
