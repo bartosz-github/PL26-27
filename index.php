@@ -50,9 +50,47 @@
         <li>account & authentication </li>
         <li>styles</li>
     </ol>
+    </ol>
 
-<!--<form action="update.php" method="post">-->
 
+
+        <h2>Storing Form Data in Database</h2>
+        <form action="insert.php" method="POST">
+            <!-- First Name input -->
+            Team name:
+            <input name="first_name" required type="text"/>
+            <br/><br/>
+
+            <!-- Last Name input -->
+            Last Name:
+            <input name="last_name" required type="text"/>
+            <br/><br/>
+
+            <!-- Gender selection -->
+            Gender:
+            <input name="gender" required type="radio" value="male"/> Male
+            <input name="gender" required type="radio" value="female"/> Female
+            <br/><br/>
+
+            <!-- Address input -->
+            Address:
+            <textarea name="address" required></textarea>
+            <br/><br/>
+
+            <!-- Email input -->
+            Email:
+            <input name="email" required type="email"/>
+            <br/><br/>
+
+            <!-- Submit button -->
+            <input type="submit" value="Submit"/>
+        </form>
+
+
+
+
+
+    <!--<form action="update.php" method="post">-->
 
 <!-- <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   Name: <input type="text" name="name">
@@ -78,7 +116,6 @@
 </form> -->
 
   <!--https://www.w3schools.com/PHP/php_form_required.asp-->
-
 
 <!-- Team: <input type="text" name="team"><br>
 Points: <input type="text" name="points"><br> -->
