@@ -9,10 +9,10 @@
 <body>
 
     <?php
-      $host = "***";
-      $user = "***";
-      $password = "***";
-      $database = "***";
+      $host = "*****";
+      $user = "*****";
+      $password = "*****";
+      $database = "*****";
 
       $connect = new mysqli($host, $user, $password, $database);
       
@@ -43,43 +43,32 @@
 
       
     ?>
-    <ol>
-        <li>db (table structure from 25-26 season)</li>
-        <li>form </li>
-        <li>form 2 update/edit/delete</li>
-        <li>account & authentication </li>
-        <li>styles</li>
-    </ol>
-    </ol>
 
-
-
-        <h2>Storing Form Data in Database</h2>
+        <h2>Results & Scores</h2>
         <form action="insert.php" method="POST">
-            <!-- First Name input -->
-            Team name:
-            <input name="first_name" required type="text"/>
+            <!-- Team one -->
+            Team 1:
+            <input name="team_one" required type="text"/>
             <br/><br/>
 
-            <!-- Last Name input -->
-            Last Name:
-            <input name="last_name" required type="text"/>
+            <!-- Team two -->
+            Team 2:
+            <input name="team_two" required type="text"/>
             <br/><br/>
 
-            <!-- Gender selection -->
-            Gender:
-            <input name="gender" required type="radio" value="male"/> Male
-            <input name="gender" required type="radio" value="female"/> Female
+            <!-- Result -->
+            Result:
+            <input name="result" required type="radio" value="team_1_won"/> Team One Won
+            <input name="result" required type="radio" value="team_2_won"/> Team Two Won
+            <input name="result" required type="radio" value="teams_draw"/> Draw
             <br/><br/>
 
-            <!-- Address input -->
-            Address:
-            <textarea name="address" required></textarea>
+            <!-- Score -->
+            Score:
+            <input name="for_team_one" required type="text"/>
+            <input name="for_team_two" required type="text"/>
             <br/><br/>
 
-            <!-- Email input -->
-            Email:
-            <input name="email" required type="email"/>
             <br/><br/>
 
             <!-- Submit button -->
@@ -88,39 +77,16 @@
 
 
 
-
-
     <!--<form action="update.php" method="post">-->
 
-<!-- <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  Name: <input type="text" name="name">
-  <span class="error">* <?php echo $nameErr;?></span>
-  <br><br>
-  E-mail:
-  <input type="text" name="email">
-  <span class="error">* <?php echo $emailErr;?></span>
-  <br><br>
-  Website:
-  <input type="text" name="website">
-  <span class="error"><?php echo $websiteErr;?></span>
-  <br><br>
-  Comment: <textarea name="comment" rows="5" cols="40"></textarea>
-  <br><br>
-  Gender:
-  <input type="radio" name="gender" value="female">Female
-  <input type="radio" name="gender" value="male">Male
-  <input type="radio" name="gender" value="other">Other
-  <span class="error">* <?php echo $genderErr;?></span>
-  <br><br>
-  <input type="submit" name="submit" value="Submit">
-</form> -->
+
 
   <!--https://www.w3schools.com/PHP/php_form_required.asp-->
 
 <!-- Team: <input type="text" name="team"><br>
 Points: <input type="text" name="points"><br> -->
 
-<input type="submit">
+<!-- <input type="submit"> -->
 </form>
 
 
