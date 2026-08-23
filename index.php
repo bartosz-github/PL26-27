@@ -44,12 +44,15 @@
       
     ?>
 
+
+<br>
+################################################################################<br>
+################################################################################<br>
         <h2>Results & Scores</h2>
         <form action="insert.php" method="POST">
             <!-- Team one -->
             Team 1:
             <input name="team_one" required type="text"/>
-            <br/><br/>
 
             <!-- Team two -->
             Team 2:
@@ -57,11 +60,11 @@
             <br/><br/>
 
             <!-- Result -->
-            Result:
+            <!-- Result:
             <input name="result" required type="radio" value="team_1_won"/> Team One Won
             <input name="result" required type="radio" value="team_2_won"/> Team Two Won
             <input name="result" required type="radio" value="teams_draw"/> Draw
-            <br/><br/>
+            <br/><br/> -->
 
             <!-- Score -->
             Score:
@@ -74,7 +77,9 @@
             <!-- Submit button -->
             <input type="submit" value="Submit"/>
         </form>
-
+<br>
+################################################################################<br>
+################################################################################<br>
 
 
     <!--<form action="update.php" method="post">-->
