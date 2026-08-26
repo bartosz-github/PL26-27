@@ -19,7 +19,7 @@ $team2 = mysqli_real_escape_string($conn, $_POST['team_two']);
 $team1score = mysqli_real_escape_string($conn, $_POST['for_team_one']);
 $team2score = mysqli_real_escape_string($conn, $_POST['for_team_two']);
 
-// Insert data into database
+
 
 
 
@@ -179,12 +179,6 @@ if ($conn->query($sql2) === TRUE) {
     echo "Error: " . $sql2 . "<br>" . $conn->error;
 }
 
-// CLEAN DATA
-if ($team1score==$team2score) {
-    echo "CLEAN DATA \n";
-    $sql1 = "UPDATE `pltable` SET `played` = (`played` + 1), `drawn` = (`drawn` + 1), `for_goals` = (`for_goals` + $team1score), `against_goals` = (`against_goals` + $team2score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 1) WHERE id = $team1_id";
-    $sql2 = "UPDATE `pltable` SET `played` = (`played` + 1), `drawn` = (`drawn` + 1), `for_goals` = (`for_goals` + $team2score), `against_goals` = (`against_goals` + $team1score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 1) WHERE id = $team2_id";
-}
 
 // Close the connection
 $conn->close();
