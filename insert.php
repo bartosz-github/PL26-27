@@ -1,4 +1,7 @@
 <?php
+
+// upd 27/08/2026
+
 $servername = "*****";
 $username = "*****;
 $password = "*****";
