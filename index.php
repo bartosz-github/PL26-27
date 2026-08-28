@@ -43,9 +43,15 @@
 
   <br>
   ################################################################################<br>
-  
+  ################################################################################<br>
           <h2>Score</h2>
           <form action="insert.php" method="POST">
+              <!-- Match Week -->
+              Match week
+              <input name="match_week" required type="number" min="1" max="38" />
+              <!--   <input type="number" id="quantity" name="quantity" min="1" max="5"><br><br> -->
+              <br/><br/>
+
               <!-- Team one -->
               Team 1:
               <input name="team_one" required type="text"/>
@@ -67,6 +73,7 @@
               <input type="submit" value="Submit"/>
           </form>
   <br>
+  ################################################################################<br>
   ################################################################################<br>
 
 </body>

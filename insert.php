@@ -6,6 +6,7 @@ $servername = "*****";
 $username = "*****;
 $password = "*****";
 $dbname = "*****";
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -15,9 +16,9 @@ if ($conn->connect_error) {
 }
 
 // Collect and sanitize form data
+$matchweek = mysqli_real_escape_string($conn, $_POST['match_week']);
 $team1 = mysqli_real_escape_string($conn, $_POST['team_one']);
 $team2 = mysqli_real_escape_string($conn, $_POST['team_two']);
-// $result = mysqli_real_escape_string($conn, $_POST['result']);
 $team1score = mysqli_real_escape_string($conn, $_POST['for_team_one']);
 $team2score = mysqli_real_escape_string($conn, $_POST['for_team_two']);
 
@@ -112,6 +113,9 @@ switch (true) {
        echo "Error!";
 }
 
+$MW_field = 'MW'.$matchweek;
+
+
 // temp nl2br
 if (($team1score==100) AND ($team2score==100)) {
     echo "CLEARING DATA... .<br>\n";
@@ -139,8 +143,8 @@ if (($team1score==100) AND ($team2score==100)) {
 
     $sql = "FOR X IN 1..1
             DO
-                UPDATE `pltable` SET `played` = (`played` + 1), `won` = (`won` + 1), `for_goals` = (`for_goals` + $team1score), `against_goals` = (`against_goals` + $team2score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 3) WHERE id = $team1_id;
-                UPDATE `pltable` SET `played` = (`played` + 1), `lost` = (`lost` + 1), `for_goals` = (`for_goals` + $team2score), `against_goals` = (`against_goals` + $team1score), `gd` = (`gd` + ($team2score-$team1score)), `points` = (`points` + 0) WHERE id = $team2_id;
+                UPDATE `pltable` SET `played` = (`played` + 1), `won` = (`won` + 1), `for_goals` = (`for_goals` + $team1score), `against_goals` = (`against_goals` + $team2score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 3), $MW_field = 3 WHERE id = $team1_id;
+                UPDATE `pltable` SET `played` = (`played` + 1), `lost` = (`lost` + 1), `for_goals` = (`for_goals` + $team2score), `against_goals` = (`against_goals` + $team1score), `gd` = (`gd` + ($team2score-$team1score)), `points` = (`points` + 0), $MW_field = 0  WHERE id = $team2_id;
             END FOR;
     ";
 } elseif ($team1score<$team2score) {
@@ -151,17 +155,17 @@ if (($team1score==100) AND ($team2score==100)) {
     
     $sql = "FOR X IN 1..1
             DO
-                UPDATE `pltable` SET `played` = (`played` + 1), `lost` = (`lost` + 1), `for_goals` = (`for_goals` + $team1score), `against_goals` = (`against_goals` + $team2score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 0) WHERE id = $team1_id;
-                UPDATE `pltable` SET `played` = (`played` + 1), `won` = (`won` + 1), `for_goals` = (`for_goals` + $team2score), `against_goals` = (`against_goals` + $team1score), `gd` = (`gd` + ($team2score-$team1score)), `points` = (`points` + 3) WHERE id = $team2_id;
+                UPDATE `pltable` SET `played` = (`played` + 1), `lost` = (`lost` + 1), `for_goals` = (`for_goals` + $team1score), `against_goals` = (`against_goals` + $team2score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 0), $MW_field = 0 WHERE id = $team1_id;
+                UPDATE `pltable` SET `played` = (`played` + 1), `won` = (`won` + 1), `for_goals` = (`for_goals` + $team2score), `against_goals` = (`against_goals` + $team1score), `gd` = (`gd` + ($team2score-$team1score)), `points` = (`points` + 3), $MW_field = 3 WHERE id = $team2_id;
             END FOR;
     ";
 } elseif ($team1score==$team2score) {
-    echo "DRAW .<br>\n";
+    echo "DRAW <br>\n";
 
     $sql = "FOR X IN 1..1
             DO
-                UPDATE `pltable` SET `played` = (`played` + 1), `drawn` = (`drawn` + 1), `for_goals` = (`for_goals` + $team1score), `against_goals` = (`against_goals` + $team2score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 1) WHERE id = $team1_id;
-                UPDATE `pltable` SET `played` = (`played` + 1), `drawn` = (`drawn` + 1), `for_goals` = (`for_goals` + $team2score), `against_goals` = (`against_goals` + $team1score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 1) WHERE id = $team2_id;
+                UPDATE `pltable` SET `played` = (`played` + 1), `drawn` = (`drawn` + 1), `for_goals` = (`for_goals` + $team1score), `against_goals` = (`against_goals` + $team2score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 1), $MW_field = 1 WHERE id = $team1_id;
+                UPDATE `pltable` SET `played` = (`played` + 1), `drawn` = (`drawn` + 1), `for_goals` = (`for_goals` + $team2score), `against_goals` = (`against_goals` + $team1score), `gd` = (`gd` + ($team1score-$team2score)), `points` = (`points` + 1), $MW_field = 1 WHERE id = $team2_id;
             END FOR;
     ";
 }
@@ -175,4 +179,8 @@ if ($conn->query($sql) === TRUE) {
 
 // Close the connection
 $conn->close();
+
+// echo "<br>";
+// echo '<a href="index.php">Back to table</a>';
+
 ?>
