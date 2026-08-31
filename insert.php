@@ -14,6 +14,54 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+// Checck pin-tuput
+// match week
+$MW =($_POST['match_week']);
+
+if ((is_numeric($MW)==1) AND ($MW>=1) AND ($MW<=38)) {
+    echo "Match week is correct.<br>";
+} else {
+    echo "Nope, no can do. Match week is not right.<br>";
+    echo "Did you input a number between 1 and 38?<br>";
+    die(); // exit();
+    //$conn->close();
+
+} //8.0.0 	Numeric strings ending with whitespace ("42 ") will now return true. Previously, false was returned instead. 
+
+$teams = array("Arsenal", "Ars", "Aston Villa", "Ast", "Bournemouth", "Bou", "Brentford", "Bre", "Brighton & Hove Albion", "Bri", "Chelsea", "Che", "Coventry City", "Cov", "Crystal Palace", "Cry", "Everton", "Eve", "Fulham", "Ful", "Hull City", "Hul", "Ipswich Town", "Ips", "Leeds United", "Lee", "Liverpool", "Liv", "Manchester City", "ManC", "Manchester United", "ManU", "Newcastle United", "New", "Nottingham Forest", "Not", "Sunderland", "Sun", "Tottenham Hotspur", "Tot");
+
+$team1 =($_POST['team_one']);
+$team2 =($_POST['team_two']);
+
+if ((in_array($team1, $teams)) AND (in_array($team2, $teams))) {
+    echo "Both team names are correct.<br>";
+} else {
+    echo "Nope, no can do. Check team names.<br>";
+    die(); // exit();
+    //$conn->close();
+}
+
+$score1 =($_POST['for_team_one']);
+$score2 =($_POST['for_team_two']);
+
+if ((is_numeric($score1)==1) AND (is_numeric($score2)==1)) {
+    echo "Both scores are correct.<br>";
+} else {
+    echo "Nope, no can do. Week score is not right.<br>";
+    die(); // exit();
+    //$conn->close();
+
+} //8.0.0 	Numeric strings ending with whitespace ("42 ") will now return true. Previously, false was returned instead. 
+
+
+
+// https://www.php.net/manual/en/function.htmlspecialchars.php
+// https://www.php.net/manual/en/function.htmlspecialchars-decode.php
+// https://www.w3schools.com/Php/func_mysqli_real_escape_string.asp
+// https://www.w3schools.com/php/php_form_validation.asp
+// https://stackoverflow.com/questions/4871942/how-to-redirect-to-another-page-using-php
+
+
 
 // Collect and sanitize form data
 $matchweek = mysqli_real_escape_string($conn, $_POST['match_week']);
@@ -115,6 +163,8 @@ switch (true) {
 
 $MW_field = 'MW'.$matchweek;
 
+// sanitize input from Score fields, 
+
 
 // temp nl2br
 if (($team1score==100) AND ($team2score==100)) {
@@ -135,10 +185,8 @@ if (($team1score==100) AND ($team2score==100)) {
     ";
 
 } elseif ($team1score>$team2score) {
-    echo "WINNER - $team1 .<br>\n";
-    echo "WINNER - $team1_id .<br>\n";
-    echo "LOSER - $team2 .<br>\n";
-    echo "LOSER - $team2_id .<br>\n";
+    echo "WINNER - $team1 <br>\n";
+    echo "LOSER - $team2 <br>\n";
     
 
     $sql = "FOR X IN 1..1
@@ -148,10 +196,8 @@ if (($team1score==100) AND ($team2score==100)) {
             END FOR;
     ";
 } elseif ($team1score<$team2score) {
-    echo "WINNER - $team2 .<br>\n";
-    echo "WINNER - $team2_id .<br>\n";
-    echo "LOSER - $team1 .<br>\n";
-    echo "LOSER - $team1_id .<br>\n";
+    echo "WINNER - $team2 <br>\n";
+    echo "LOSER - $team1 <br>\n";
     
     $sql = "FOR X IN 1..1
             DO

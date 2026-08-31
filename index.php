@@ -49,7 +49,6 @@
               <!-- Match Week -->
               Match week
               <input name="match_week" required type="number" min="1" max="38" />
-              <!--   <input type="number" id="quantity" name="quantity" min="1" max="5"><br><br> -->
               <br/><br/>
 
               <!-- Team one -->
@@ -63,8 +62,8 @@
 
               <!-- Score -->
               Score:
-              <input name="for_team_one" required type="text"/>
-              <input name="for_team_two" required type="text"/>
+              <input name="for_team_one" required type="number"/>
+              <input name="for_team_two" required type="number"/>
               <br/><br/>
 
               <br/><br/>
