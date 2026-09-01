@@ -20,7 +20,7 @@
         die("Failed to connect with database");
       echo "Database connected!";
 
-      $sql = "SELECT id, team, played, points  FROM pltable ORDER BY id";
+      $sql = "SELECT id, team, played, points, gd  FROM pltable ORDER BY points DESC, gd DESC, for_goals DESC";
       $result = $connect->query($sql);
 
       echo "<br>";
@@ -29,7 +29,7 @@
       if ($result->num_rows > 0) {
         // Output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "" . $row["id"]. " - " . $row["team"]." [". $row["played"] ."] ". " [". $row["points"] ."] "."<br>";
+          echo "" . $row["id"]. " - " . $row["team"]." [". $row["played"] ."] ". " [". $row["points"] ."] ". " [". $row["gd"] ."] "."<br>";
         }
       } else {
         echo "0 results";
