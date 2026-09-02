@@ -18,22 +18,26 @@
       
       if($connect->error)
         die("Failed to connect with database");
-      echo "Database connected!";
+      echo "Database connected";
 
       $sql = "SELECT id, team, played, points, gd  FROM pltable ORDER BY points DESC, gd DESC, for_goals DESC";
       $result = $connect->query($sql);
 
       echo "<br>";
       echo "<br>";
+      $x = 1;
 
       if ($result->num_rows > 0) {
         // Output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "" . $row["id"]. " - " . $row["team"]." [". $row["played"] ."] ". " [". $row["points"] ."] ". " [". $row["gd"] ."] "."<br>";
+              $Y = 30-(strlen($row["team"]));
+              echo  $x . " - " . $row["team"] . " ".$Y .  str_repeat("&ensp;", $Y) . "Played:" . $row["played"] .  ("&ensp;") . "Points:" . $row["points"] .  ("&ensp;") . "Gd:" . $row["gd"] ."<br>"; //"" . $row["id"].
+              $x = $x + 1;
         }
       } else {
         echo "0 results";
       }
+
 
       $connect->close();
 
