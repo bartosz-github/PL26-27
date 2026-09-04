@@ -31,7 +31,7 @@
         // Output data of each row
         while($row = $result->fetch_assoc()) {
               $Y = 30-(strlen($row["team"]));
-              echo  $x . " - " . $row["team"] . " ".$Y .  str_repeat("&ensp;", $Y) . "Played:" . $row["played"] .  ("&ensp;") . "Points:" . $row["points"] .  ("&ensp;") . "Gd:" . $row["gd"] ."<br>"; //"" . $row["id"].
+              echo  $x . " - " . $row["team"] . " ".$Y .  str_repeat("&ensp;", $Y) . $row["played"] .  ("&ensp;") . $row["points"] .  ("&ensp;") . $row["gd"] ."<br>"; //"" . $row["id"].
               $x = $x + 1;
         }
       } else {
