@@ -2,10 +2,10 @@
 
 // upd 27/08/2026
 
-$servername = "*****";
-$username = "*****;
-$password = "*****";
-$dbname = "*****";
+$servername = "******";
+$username = "******";
+$password = "******";
+$dbname = "******";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -9,10 +9,10 @@
 <body>
 
     <?php
-      $host = "*****";
-      $user = "*****";
-      $password = "*****";
-      $database = "*****";
+      $host = "******";
+      $user = "******";
+      $password = "******";
+      $database = "******";
 
       $connect = new mysqli($host, $user, $password, $database);
       
