@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>PL 2026-2027</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<!--updated 5th game-->
+
+
     <?php
       $host = "******";
       $user = "******";
@@ -26,12 +27,13 @@
       echo "<br>";
       echo "<br>";
       $x = 1;
-
+      echo"Pos"." Team name"." "." Played"." Points"." GD";
+      echo "<br>";
       if ($result->num_rows > 0) {
         // Output data of each row
         while($row = $result->fetch_assoc()) {
               $Y = 30-(strlen($row["team"]));
-              echo  $x . " - " . $row["team"] . " ".$Y .  str_repeat("&ensp;", $Y) . $row["played"] .  ("&ensp;") . $row["points"] .  ("&ensp;") . $row["gd"] ."<br>"; //"" . $row["id"].
+              echo  $x . " - " . $row["team"] . " ".  str_repeat("&ensp;", $Y) . $row["played"] .  ("&ensp;") . $row["points"] .  ("&ensp;") . $row["gd"] ."<br>"; //"" . $row["id"].
               $x = $x + 1;
         }
       } else {
